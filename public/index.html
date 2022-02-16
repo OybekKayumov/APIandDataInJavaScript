@@ -5,11 +5,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>API data JS</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <h1>Data with API JavaScript</h1>
+<script>
+  if('geolocation' in navigator) {
+  /* geolocation is available */
+  console.log('geolocation is available');
+  navigator.geolocation.getCurrentPosition((position) => {
+    // console.log(position.coords.longitude);
+    // console.log(position.coords.latitude);
 
-  <p>Hello!</p>
-    
+    const lat =position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    document.getElementById('longitude').textContent = lon;
+    document.getElementById('latitude').textContent = lat;
+    console.log(position);
+});
+} else {
+  /* geolocation IS NOT available */
+  console.log('geolocation IS NOT available');
+}
+</script>
+
+  <h1>Data with API in JavaScript</h1>
+
+  <p>
+    latitude: <span id="latitude"></span>&deg;<br>
+    longitude: <span id="longitude"></span>&deg;<br>
+  </p>
+  
+
+  <!-- <script src="../public/script.js"></script> -->
 </body>
 </html>
