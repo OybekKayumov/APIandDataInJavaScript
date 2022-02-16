@@ -19,9 +19,26 @@
     const lat =position.coords.latitude;
     const lon = position.coords.longitude;
 
-    document.getElementById('longitude').textContent = lon;
     document.getElementById('latitude').textContent = lat;
+    document.getElementById('longitude').textContent = lon;
     console.log(position);
+
+    // create Object "data"
+    const data = { lat, lon }
+    const options = {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(data)
+    }
+    // send this object with regular fetch
+    fetch('/api', options)
+      .then(response => {
+        console.log('response2: ', response);
+      })
+
 });
 } else {
   /* geolocation IS NOT available */
