@@ -2,13 +2,21 @@
   "name": "6-fetch-api-2-1-workingwithdataandapiinjs",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OybekKayumov/APIandDataInJavaScript.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OybekKayumov/APIandDataInJavaScript/issues"
+  },
+  "homepage": "https://github.com/OybekKayumov/APIandDataInJavaScript#readme",
   "dependencies": {
     "express": "^4.17.2"
   }
