@@ -23,9 +23,10 @@ app.post('/api', (request, response) => {
   console.log('I got a request!');
   console.log('request: ', request.body);
 
+  const data = request.body;
   response.json({
     status: 'success!',
-    latitude: lat,
-    longitude: lon
+    latitude: data.lat,
+    longitude: data.lon
   });
 });  
