@@ -1,4 +1,5 @@
 const express = require('express')
+const Datastore = require('nedb');
 const app = express()
 
 app.listen(3000, () => 
@@ -18,6 +19,9 @@ app.use(express.json({limit: '1mb'}));
 // app.listen(port, () => {
 //   console.log(`Example app listening on port ${port}`)
 // })
+const database = new Datastore('database.db');
+//first time creates file database.db
+database.loadDatabase();
 
 app.post('/api', (request, response) => {
   console.log('I got a request!');
