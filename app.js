@@ -23,6 +23,10 @@ const database = new Datastore('database.db');
 //first time creates file database.db
 database.loadDatabase();
 
+//insert data into DB
+database.insert({name: 'John', status:'🚀'});
+database.insert({name: 'Mike', status:'✅'});
+
 app.post('/api', (request, response) => {
   console.log('I got a request!');
   console.log('request: ', request.body);
