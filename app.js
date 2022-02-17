@@ -24,16 +24,23 @@ const database = new Datastore('database.db');
 database.loadDatabase();
 
 //insert data into DB
-database.insert({name: 'John', status:'🚀'});
-database.insert({name: 'Mike', status:'✅'});
+// database.insert({name: 'John', status:'🚀'});
+// database.insert({name: 'Mike', status:'✅'});
 
 app.post('/api', (request, response) => {
   console.log('I got a request!');
   console.log('request: ', request.body);
 
   const data = request.body;
+
+  const timeStamp = Date.now();
+  data.timeStamp = timeStamp;
+
+  database.insert(data);
+  console.log(database);
   response.json({
     status: 'success!',
+    timeStamp: timeStamp,
     latitude: data.lat,
     longitude: data.lon
   });
