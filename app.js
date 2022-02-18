@@ -27,6 +27,10 @@ database.loadDatabase();
 // database.insert({name: 'John', status:'🚀'});
 // database.insert({name: 'Mike', status:'✅'});
 
+app.get('/api', (request, response) => {
+  response.json({ test: 123 })   
+})
+
 app.post('/api', (request, response) => {
   console.log('I got a request!');
   console.log('request: ', request.body);
