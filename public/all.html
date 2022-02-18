@@ -12,7 +12,7 @@
   <script>
 
     getData();
-    
+
     async function getData() {
       const res = await fetch('/api');
       const data = await res.json();
@@ -24,7 +24,7 @@
         const date = document.createElement('div');
 
         // mood.textContent = `mood: ${item.mood}`;
-        geo.textContent = `${item.lat} , ${item.lon}`;
+        geo.textContent = `${item.lat}°, ${item.lon}°`;
         const dateString = new Date(item.timeStamp).toLocaleString();
         date.textContent = dateString;
 

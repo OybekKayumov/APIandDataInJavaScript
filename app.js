@@ -29,7 +29,11 @@ database.loadDatabase();
 
 app.get('/api', (request, response) => {
   database.find({}, (err, data) => {
-    // response.json({ test: 123 })   
+    // response.json({ test: 123 })
+    if (err) {
+      response.end();
+      return;
+    }   
     response.json(data)   
   });
 });
