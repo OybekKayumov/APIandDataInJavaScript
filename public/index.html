@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>API data JS</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
 <script>
-  if('geolocation' in navigator) {
+
+  function setup() {
+    if('geolocation' in navigator) {
   /* geolocation is available */
   console.log('geolocation is available');
   navigator.geolocation.getCurrentPosition(async (position) => {
@@ -46,6 +49,10 @@
   /* geolocation IS NOT available */
   console.log('geolocation IS NOT available');
 }
+
+  }
+   
+  
 </script>
 
   <h1>Data with API in JavaScript</h1>
@@ -54,6 +61,9 @@
     latitude: <span id="latitude"></span>&deg;<br>
     longitude: <span id="longitude"></span>&deg;<br>
   </p>
+
+  <input id="mood" type="text" value="rainbow">
+  <button id="submit">Submit</button>
   
 
   <!-- <script src="../public/script.js"></script> -->
