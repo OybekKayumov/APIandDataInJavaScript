@@ -51,7 +51,11 @@
         }
 
         // automatic created canvas
-        background(255, 0, 0)
+        // background(255, 0, 0)
+
+        noCanvas();
+        const video = createCapture(VIDEO);
+        video.size(320, 240);
   }
    
   
