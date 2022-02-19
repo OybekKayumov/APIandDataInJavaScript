@@ -27,6 +27,17 @@ database.loadDatabase();
 // database.insert({name: 'John', status:'🚀'});
 // database.insert({name: 'Mike', status:'✅'});
 
+app.get('/api', (request, response) => {
+  database.find({}, (err, data) => {
+    // response.json({ test: 123 })
+    if (err) {
+      response.end();
+      return;
+    }   
+    response.json(data)   
+  });
+});
+
 app.post('/api', (request, response) => {
   console.log('I got a request!');
   console.log('request: ', request.body);

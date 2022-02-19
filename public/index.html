@@ -4,48 +4,61 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>API data JS</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
 <script>
-  if('geolocation' in navigator) {
-  /* geolocation is available */
-  console.log('geolocation is available');
-  navigator.geolocation.getCurrentPosition(async (position) => {
-    // console.log(position.coords.longitude);
-    // console.log(position.coords.latitude);
 
-    const lat =position.coords.latitude;
-    const lon = position.coords.longitude;
+  function setup() {
+        if('geolocation' in navigator) {
+      /* geolocation is available */
+      console.log('geolocation is available');
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        // console.log(position.coords.longitude);
+        // console.log(position.coords.latitude);
 
-    document.getElementById('latitude').textContent = lat;
-    document.getElementById('longitude').textContent = lon;
-    console.log(position);
+        const lat =position.coords.latitude;
+        const lon = position.coords.longitude;
 
-    // create Object "data"
-    const data = { lat, lon }
-    const options = {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify(data)
-    }
-    // send this object with regular fetch
-    const response = await fetch('/api', options)
-    const json = await response.json();
-    console.log(json);
-      // .then(response => {
-      //   console.log('response2: ', response);
-      // })
+        document.getElementById('latitude').textContent = lat;
+        document.getElementById('longitude').textContent = lon;
+        console.log(position);
 
-});
-} else {
-  /* geolocation IS NOT available */
-  console.log('geolocation IS NOT available');
-}
+        // create Object "data"
+        const data = { lat, lon }
+        const options = {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify(data)
+        }
+        // send this object with regular fetch
+        const response = await fetch('/api', options)
+        const json = await response.json();
+        console.log(json);
+          // .then(response => {
+          //   console.log('response2: ', response);
+          // })
+
+        });
+        } else {
+          /* geolocation IS NOT available */
+          console.log('geolocation IS NOT available');
+        }
+
+        // automatic created canvas
+        // background(255, 0, 0)
+
+        noCanvas();
+        const video = createCapture(VIDEO);
+        video.size(320, 240);
+  }
+   
+  
 </script>
 
   <h1>Data with API in JavaScript</h1>
@@ -54,6 +67,9 @@
     latitude: <span id="latitude"></span>&deg;<br>
     longitude: <span id="longitude"></span>&deg;<br>
   </p>
+
+  <input id="mood" type="text" value="rainbow">
+  <button id="submit">Submit</button>
   
 
   <!-- <script src="../public/script.js"></script> -->
